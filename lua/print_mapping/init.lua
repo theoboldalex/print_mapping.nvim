@@ -1,8 +1,3 @@
-P = function(v)
-    print(vim.inspect(v))
-    return v
-end
-
 local M  = {}
 
 local find_mapping = function(maps, lhs)
@@ -17,7 +12,7 @@ local mapping_printer = function(mapping)
     print("Mapping: ", vim.inspect(mapping.lhs), " | ", "Command: ", vim.inspect(mapping.rhs))
 end
 
-M.show_mapping = function(name, mode, mappings)
+M.show_mapping = function(mode, mappings)
     local maps = vim.api.nvim_get_keymap(mode)
 
     local existing_maps = {}
@@ -32,10 +27,5 @@ M.show_mapping = function(name, mode, mappings)
         mapping_printer(v)
     end
 end
-
-M.show_mapping("debug_mode", "n", {
-    [" st"] = "echo 'hello'",
-    [" ff"] = "echo 'goodbye'",
-})
 
 return M
