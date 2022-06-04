@@ -10,7 +10,7 @@ printmap = function(...)
         end
     end
 
-    return require("print_mapping").show_mapping(args["mode"], {[args["map"]] = ""})
+    return require("print_mapping").show_mapping(args["mode"], args["map"])
 end
 
 vim.cmd([[command! -nargs=* -range Printmap call luaeval("printmap(_A)", [<line1>, <line2>, <count>, <f-args>])]])
